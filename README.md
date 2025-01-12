@@ -28,20 +28,6 @@ Before running the app, make sure you have the following installed:
 
    npm run dev
 
-4. Open the broser
+4. Open the browser
 
-
-## Getting Started
-
-First, run the development server:
-[http://localhost:3000](http://localhost:3000)
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   http://localhost:3000/
