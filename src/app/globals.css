@@ -1,0 +1,22 @@
+.layout-container {
+  padding: 20px;
+  background-color: #fafafa; /* Light background */
+}
+
+h3 {
+  color: #c00; /* F1 red */
+  font-weight: bold;
+}
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /* Use a similar F1 font */
+}
