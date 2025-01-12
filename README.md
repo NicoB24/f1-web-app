@@ -21,10 +21,12 @@ Before running the app, make sure you have the following installed:
    git clone https://github.com/your-username/f1-statistics-app.git
 
 2. Install the app
-npm install
+  
+   npm install
 
 3. Run the server
-npm run dev
+
+   npm run dev
 
 4. Open the broser
 
