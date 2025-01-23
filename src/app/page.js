@@ -14,6 +14,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedDate, setSelectedDate] = useState('current');
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
     async function fetchDrivers() {
@@ -33,8 +34,9 @@ export default function Home() {
     fetchDrivers();
   }, [selectedDate]);
 
-  const handleDateChange = (year) => {
-    setSelectedDate(year);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setSelectedYear(date.year());
   };
 
   if (loading) {
@@ -58,7 +60,7 @@ export default function Home() {
       <Typography variant="h3" gutterBottom>
         F1 Statistics
       </Typography>
-      <CustomDatePicker label="Year" onDateChange={handleDateChange} />
+      <CustomDatePicker label={selectedYear} onDateChange={handleDateChange} />
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
         {drivers.map((driver) => (
           <DriverCard key={driver.driverId} driver={driver} />
@@ -105,7 +107,7 @@ function CustomDatePicker({ label, onDateChange }) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-        label={label}
+        label={`Selected year: ${label}`}
         value={selectedDate}
         onChange={handleChange}
         renderInput={(params) => (
