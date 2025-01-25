@@ -1,14 +1,4 @@
-import dayjs from 'dayjs';
-
-export async function getDriversByDate(date) {
-  let year;
-
-  if (date !== 'current') {
-    year = date ? dayjs(date).year() : dayjs().year();
-  } else {
-    year = 'current'
-  }
-
+export async function getDriversByYear(year) {
   const API_URL = `https://api.jolpi.ca/ergast/f1/${year}/drivers.json`;
 
   let allDrivers = [];

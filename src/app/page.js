@@ -7,13 +7,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import TextField from '@mui/material/TextField';
 
-import { getDriversByDate } from '../lib/api';
+import { getDriversByYear } from '../lib/api';
 
 export default function Home() {
   const [drivers, setDrivers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedDate, setSelectedDate] = useState('current');
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export default function Home() {
         setLoading(true);
         setError(null);
 
-        const driversData = await getDriversByDate(selectedDate);
+        const driversData = await getDriversByYear(selectedYear);
         setDrivers(driversData);
       } catch (err) {
         setError(err.message || 'Failed to fetch drivers.');
@@ -32,10 +31,9 @@ export default function Home() {
     }
 
     fetchDrivers();
-  }, [selectedDate]);
+  }, [selectedYear]);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const handleYearChange = (date) => {
     setSelectedYear(date.year());
   };
 
@@ -60,7 +58,7 @@ export default function Home() {
       <Typography variant="h3" gutterBottom>
         F1 Statistics
       </Typography>
-      <CustomDatePicker label={selectedYear} onDateChange={handleDateChange} />
+      <CustomDatePicker label={selectedYear} onDateChange={handleYearChange} />
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
         {drivers.map((driver) => (
           <DriverCard key={driver.driverId} driver={driver} />
