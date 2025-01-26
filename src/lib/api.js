@@ -6,7 +6,6 @@ export async function getDriversByYear(year) {
   let totalPages = 1;
 
   try {
-    // Loop through paginated results
     while (currentPage <= totalPages) {
       const response = await fetch(`${API_URL}?offset=${(currentPage - 1) * 30}`);
 
