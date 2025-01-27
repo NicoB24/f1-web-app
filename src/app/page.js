@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Container, Box, Typography, Card, CardContent, CircularProgress, Alert } from '@mui/material'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import TextField from '@mui/material/TextField';
-
+import { Container, Box, Typography, CircularProgress, Alert } from '@mui/material';
+import dynamic from 'next/dynamic';
+import DriverCard from './components/driver-card';
 import { getDriversByYear } from '../lib/api';
+
+const CustomDatePicker = dynamic(() => import('./components/custom-date-picker'), { ssr: false });
 
 export default function Home() {
   const [drivers, setDrivers] = useState([]);
@@ -65,57 +64,5 @@ export default function Home() {
         ))}
       </Box>
     </Container>
-  );
-}
-
-function DriverCard({ driver }) {
-  return (
-    <Card sx={{ width: 400, padding: 2, boxShadow: 3 }}>
-      <CardContent>
-        <Typography variant="h5" component="div" gutterBottom>
-          {driver.fullName}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Nationality: {driver.nationality}
-        </Typography>
-        <Typography
-          component="a"
-          href={driver.wikipedia}
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="body2"
-          color="primary"
-          sx={{ textDecoration: 'underline', mt: 1 }}
-        >
-          Visit Wikipedia
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-}
-
-function CustomDatePicker({ label, onDateChange }) {
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const handleChange = (newValue) => {
-    setSelectedDate(newValue);
-    onDateChange(newValue);
-  };
-
-  return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker
-        label={`Selected year: ${label}`}
-        value={selectedDate}
-        onChange={handleChange}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-          />
-        )}
-        openTo="year"
-        views={['year']}
-      />
-    </LocalizationProvider>
   );
 }
