@@ -1,6 +1,6 @@
 # F1 Statistics App 🚗
 
-This app fetches and displays F1 driver statistics from the [Ergast API](https://github.com/jolpica/jolpica-f1). Users can select a year to view driver information, and the app fetches relevant data based on the selected year.
+This app fetches and displays F1 driver statistics from the [Ergast API](https://github.com/jolpica/jolpica-f1). Users can select a year to view driver information, and the app fetches relevant data based on the selected year
 
 ## Features
 - **Year Picker**: Allows users to select a year.
