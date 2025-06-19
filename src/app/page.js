@@ -1,7 +1,9 @@
+import ChampionshipSummary from '@/app/components/championship-summary';
+
 export default function HomePage() {
   return (
     <main>
-      {/* home */}
+      <ChampionshipSummary />
     </main>
   );
 }
