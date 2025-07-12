@@ -18,7 +18,7 @@ Before running the app, make sure you have the following installed:
 
 1. Clone the repository to your local machine:
 
-   git clone https://github.com/your-username/f1-statistics-app.git
+   git clone [https://github.com/your-username/f1-statistics-app.git](https://github.com/NicoB24/f1-web-app.git)
 
 2. Install the app
   
